@@ -14,8 +14,9 @@ function MyState({ children }) {
       document.body.style.color = "#000";
     }
   };
+  const [loading, setLoading] = useState(false);
   return (
-    <MyContext.Provider value={{ mode, toggleBtn }}>
+    <MyContext.Provider value={{ mode, toggleBtn, loading, setLoading }}>
       {children}
     </MyContext.Provider>
   );
