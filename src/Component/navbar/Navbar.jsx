@@ -9,6 +9,7 @@ import { Fragment } from "react";
 import { Dialog } from "@headlessui/react";
 import { RxCross2 } from "react-icons/rx";
 import Avtar from "../../assests/photo-1568602471122-7832951cc4c5.avif";
+import { useSelector } from "react-redux";
 function Navbar() {
   const context = useContext(MyContext);
   const { mode, toggleBtn } = context;
@@ -18,7 +19,7 @@ function Navbar() {
 
   const userEmail = user?.user?.email;
   const navigate = useNavigate();
-
+  const cartItem = useSelector((state) => state.cart);
   const logout = () => {
     localStorage.clear("user");
     navigate("/");
@@ -338,7 +339,7 @@ function Navbar() {
                       className="ml-2 text-sm font-medium text-gray-700 group-"
                       style={{ color: mode === "dark" ? "white" : "" }}
                     >
-                      0
+                      {cartItem.length}
                     </span>
                     <span className="sr-only">items in cart, view bag</span>
                   </Link>

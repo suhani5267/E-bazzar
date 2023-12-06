@@ -30,33 +30,12 @@ function App() {
             }
           />
           <Route path="/cart" element={<Cart />} />
-          <Route
-            path="/dashboard"
-            element={
-              <ProtectedRoutesForAdmin>
-                <Dashboard />
-              </ProtectedRoutesForAdmin>
-            }
-          />
+          <Route path="/dashboard" element={<Dashboard />} />
           <Route path="/login" element={<Login />} />
           <Route path="/singin" element={<SingIn />} />
           <Route path="/productInfo/:id" element={<ProductInfo />} />
-          <Route
-            path="/addproduct"
-            element={
-              <ProtectedRoutesForAdmin>
-                <AddPrduct />
-              </ProtectedRoutesForAdmin>
-            }
-          />
-          <Route
-            path="/upDateproduct"
-            element={
-              <ProtectedRoutesForAdmin>
-                <UpDateProduct />
-              </ProtectedRoutesForAdmin>
-            }
-          />
+          <Route path="/addproduct" element={<AddPrduct />} />
+          <Route path="/upDateproduct" element={<UpDateProduct />} />
           <Route path="/*" element={<NoPage />} />
         </Routes>
         <ToastContainer />
