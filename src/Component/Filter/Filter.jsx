@@ -4,7 +4,16 @@ import { FaSearch } from "react-icons/fa";
 import { Select, Option } from "@material-tailwind/react";
 function Filter() {
   const context = useContext(MyContext);
-  const { mode } = context;
+  const {
+    mode,
+    searchkey,
+    setSearchkey,
+    filterType,
+    setFilterType,
+    filterPrice,
+    setFilterPrice,
+    product,
+  } = context;
   return (
     <div>
       <div className="container mx-auto px-5 mt-5">
@@ -29,6 +38,8 @@ function Filter() {
                 color: mode === "dark" ? "white" : "",
               }}
               required
+              value={searchkey}
+              onChange={(e) => setSearchkey(e.target.value)}
             ></input>
           </div>
           <div className="flex items-center justify-between mt-4">
@@ -48,13 +59,14 @@ function Filter() {
                 backgroundColor: mode === "dark" ? "rgb(64 66 70)" : "",
                 color: mode === "dark" ? "white" : "",
               }}
+              value={filterType}
+              onChange={(e) => setFilterType(e.target.value)}
             >
               {" "}
-              <option value="All">All</option>
-              <option value="jacket">Jacket</option>
-              <option value="shirt">shirt</option>
-              <option value="mobile">mobile</option>
-              <option value="jacket">Jacket</option>
+              <option value="All">Select Category</option>
+              {product.map((items, i) => (
+                <option value={items.category}>{items.category}</option>
+              ))}
             </select>
             <select
               className="px-4 py-3 w-full rounded-md bg-gray-50 border-transparent outline-0  focus:border-gray-500 focus:bg-white focus:ring-0 text-sm"
@@ -62,12 +74,13 @@ function Filter() {
                 backgroundColor: mode === "dark" ? "rgb(64 66 70)" : "",
                 color: mode === "dark" ? "white" : "",
               }}
+              value={filterPrice}
+              onChange={(e) => setFilterPrice(e.target.value)}
             >
               <option value="Any Price">Any Price</option>
-              <option value="100">100</option>
-              <option value="200">200</option>
-              <option value="300">300</option>
-              <option value="400">400</option>
+              {product.map((items, i) => (
+                <option value={items.price}>{items.price}</option>
+              ))}
             </select>
           </div>
         </div>

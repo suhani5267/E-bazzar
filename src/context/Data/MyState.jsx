@@ -6,6 +6,7 @@ import {
   collection,
   deleteDoc,
   doc,
+  getDocs,
   onSnapshot,
   orderBy,
   query,
@@ -81,9 +82,6 @@ function MyState({ children }) {
       console.log(error);
     }
   };
-  useEffect(() => {
-    getProduct();
-  }, []);
 
   // for editable
   const ediatble = (item) => {
@@ -122,6 +120,56 @@ function MyState({ children }) {
       setLoading(false);
     }
   };
+
+  // get Product in order
+
+  const [order, setOrder] = useState([]);
+
+  const getOrderData = async () => {
+    setLoading(true);
+    try {
+      const result = await getDocs(collection(fireDB, "order"));
+      const ordersArray = [];
+      result.forEach((doc) => {
+        ordersArray.push(doc.data());
+        setLoading(false);
+      });
+      setOrder(ordersArray);
+      console.log(ordersArray);
+      setLoading(false);
+    } catch (error) {
+      console.log(error.massgae);
+      setLoading(false);
+    }
+  };
+
+  const [users, setUsers] = useState([]);
+  const getUser = async () => {
+    setLoading(true);
+    try {
+      const userData = await getDocs(collection(fireDB, "users"));
+      const userArray = [];
+      userData.forEach((doc) => {
+        userArray.push(doc.data());
+        setLoading(false);
+      });
+      setUsers(userArray);
+      setLoading(false);
+    } catch (error) {
+      console.log(error);
+      setLoading(false);
+    }
+  };
+
+  useEffect(() => {
+    getProduct();
+    getOrderData();
+    getUser();
+  }, []);
+  const [searchkey, setSearchkey] = useState("");
+  const [filterType, setFilterType] = useState("");
+  const [filterPrice, setFilterPrice] = useState("");
+
   return (
     <MyContext.Provider
       value={{
@@ -136,6 +184,14 @@ function MyState({ children }) {
         ediatble,
         deleteProduct,
         updateproduct,
+        order,
+        users,
+        searchkey,
+        setSearchkey,
+        filterType,
+        setFilterType,
+        filterPrice,
+        setFilterPrice,
       }}
     >
       {children}
