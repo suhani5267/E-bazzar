@@ -75,15 +75,10 @@ function Product() {
                       >
                         {title}
                       </h2>
-                      <h1
-                        className="title-font text-lg font-medium text-gray-900 mb-3"
-                        style={{ color: mode === "dark" ? "white" : "" }}
-                      >
-                        {discription}
-                      </h1>
+
                       {/* <p className="leading-relaxed mb-3">{item.description.}</p> */}
                       <p
-                        className="leading-relaxed mb-3"
+                        className="leading-relaxed mb-3 font-bold text-3xl"
                         style={{ color: mode === "dark" ? "white" : "" }}
                       >
                         ₹{price}

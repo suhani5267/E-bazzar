@@ -1,5 +1,5 @@
 import React, { useContext, useState } from "react";
-import "./Navbar.css";
+
 import MyContext from "../../context/Data/Context";
 import { Link, useNavigate } from "react-router-dom";
 import { FiSun } from "react-icons/fi";

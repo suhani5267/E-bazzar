@@ -15,6 +15,7 @@ import UpDateProduct from "./pages/admin/Page/UpDateProduct";
 import { ToastContainer, toast } from "react-toastify";
 
 import "react-toastify/dist/ReactToastify.css";
+import AllProduct from "./pages/allProducts/AllProduct";
 function App() {
   return (
     <div className="App">
@@ -59,6 +60,7 @@ function App() {
           />
           <Route path="/*" element={<NoPage />} />
           <Route path="order" element={<Oder />} />
+          <Route path="/allproducts" element={<AllProduct />} />
         </Routes>
         <ToastContainer />
       </MyState>
