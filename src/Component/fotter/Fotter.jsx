@@ -129,7 +129,7 @@ function Fotter() {
             className="ml-2 text-gray-900 font-bold text-lg"
             style={{ color: mode === "dark" ? "white" : "" }}
           >
-            © 2023 E-bharat —@www.e-barat.com
+            © 2025 E-bharat —@www.e-barat.com
           </p>
 
           <div className="flex flex-end text-gary-900 gap-[1rem]">
